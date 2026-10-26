@@ -1,0 +1,36 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ROUTES } from './routes';
+import ScheduleScreen from '../screens/schedule/ScheduleScreen';
+import SessionDetailScreen from '../screens/schedule/SessionDetailScreen';
+import colors from '../theme/colors';
+
+const Stack = createNativeStackNavigator();
+
+export default function ScheduleStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.surface,
+        },
+        headerTintColor: colors.text,
+        headerTitleStyle: {
+          fontWeight: '700',
+        },
+        headerBackTitleVisible: false,
+      }}
+    >
+      <Stack.Screen
+        name={ROUTES.SCHEDULE}
+        component={ScheduleScreen}
+        options={{ title: 'Thời khóa biểu' }}
+      />
+      <Stack.Screen
+        name={ROUTES.SESSION_DETAIL}
+        component={SessionDetailScreen}
+        options={{ title: 'Chi tiết buổi học' }}
+      />
+    </Stack.Navigator>
+  );
+}
